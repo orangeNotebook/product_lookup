@@ -1,24 +1,21 @@
-const fs = require("fs");
 const readline = require("readline");
 const rl = readline.createInterface(process.stdin, process.stdout);
 
-let products = fs
-  .readFileSync("../products/productList.txt")
-  .toString()
-  .replace(" ", "")
-  .split(",");
-
+let products = ["PL123456", "PL513872", "PL999999", "PL654321", "PL818181"];
 console.log(products);
 
+function isProductPresent(search) {
+  return products.includes(search);
+}
+
 function inputHandler(search) {
-  let found = products.includes(search);
-  if (found) {
+  if (isProductPresent(search)) {
     console.log(search, "exists in the system");
-    return true;
   } else {
     console.log(search, "does not exist in the system");
-    return false;
   }
 }
 
 rl.question("Input the product you are searching for: ", inputHandler);
+
+exports.isProductPresent = isProductPresent;
