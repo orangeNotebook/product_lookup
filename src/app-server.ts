@@ -5,12 +5,7 @@ const port = 3000;
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.send(`
-  <div>
-  <h1>Main Page</h1>
-  <br>
-  <a href='/root-test/'>CLICK ME</a>
-  </div>`);
+  res.sendfile("src/views/index.html");
 });
 
 app.get("/root-test/", (req, res) => {
