@@ -1,23 +1,27 @@
 const express = require("express");
+import * as path from "path";
+import search from "./index";
+
 const app = express();
 const port = 3000;
 
-app.use(express.static("public"));
-
 app.get("/", (req, res) => {
-  res.sendfile("src/views/index.html");
+  res.render("index", {
+    title: "title be like",
+    message: "H1 BE LIKE",
+  });
 });
 
-app.get("/root-test/", (req, res) => {
-  res.send(`
-  <div>
-  <p>Nice, you can click a link!, but can you <a href='/car.png'>clik me?</a></p>
-  </div>`);
+app.get("/product/:word", (req, res) => {
+  res.send(search(req.params.word));
 });
 
-app.get("/mirror/:word", (req, res) => {
-  res.send(req.params.word);
-});
+app.set("title", "Product Finder");
+
+app.set("view engine", "pug");
+app.set("views", "./out/views");
+
+app.use(express.static("public"));
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
