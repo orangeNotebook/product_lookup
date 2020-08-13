@@ -1,0 +1,9 @@
+body
+  h1
+    |Product Finder
+  form(action='/product', method='POST')
+    p
+      | Products PL number: 
+      input(type='text', name='plNumber', value='')
+    input(type='submit', value='Submit')
+    

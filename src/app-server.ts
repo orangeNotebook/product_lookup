@@ -5,19 +5,26 @@ import search from "./index";
 const app = express();
 const port = 3000;
 
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+
 app.get("/", (req, res) => {
-  res.render("index", {
-    title: "title be like",
-    message: "H1 BE LIKE",
-  });
+  res.render("index");
 });
 
-app.get("/product/:word", (req, res) => {
-  res.send(search(req.params.word));
+app.post("/product", (req, res) => {
+  let product = search(req.body.plNumber);
+  if (product) {
+    res.send(product);
+  } else {
+    res.send("The product you are looking for was not found");
+  }
 });
 
 app.set("title", "Product Finder");
-
 app.set("view engine", "pug");
 app.set("views", "./out/views");
 

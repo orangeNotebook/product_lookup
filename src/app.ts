@@ -1,9 +1,10 @@
 import readline = require("readline");
 import ProductFinder from "./services/finder";
+import Product from "./models/product";
 
 let rl = readline.createInterface(process.stdin, process.stdout);
 
-export function inputHandler(answer: string, finder: ProductFinder): string {
+export function inputHandler(answer: string, finder: ProductFinder): Product {
   if (answer === "Q") {
     rl.close();
     return null;
@@ -11,9 +12,9 @@ export function inputHandler(answer: string, finder: ProductFinder): string {
 
   let result = finder.getProduct(answer);
   if (result) {
-    return result.toString();
+    return result;
   } else {
-    return `Product doesn't exist ${answer}`;
+    return null;
   }
 
   getInput(finder);
