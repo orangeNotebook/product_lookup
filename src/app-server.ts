@@ -18,7 +18,9 @@ app.get("/", (req, res) => {
 app.post("/product", (req, res) => {
   let product = search(req.body.plNumber);
   if (product) {
-    res.send(product);
+    res.render("product", {
+      product: product,
+    });
   } else {
     res.send("The product you are looking for was not found");
   }

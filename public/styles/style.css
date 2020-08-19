@@ -1,0 +1,8 @@
+body {
+  background-color: rgb(236, 178, 149);
+  font-family: "Calibri";
+  text-align: center;
+}
+.search-head {
+  pointer-events: auto;
+}

@@ -1,9 +1,12 @@
-body
-  h1
-    |Product Finder
-  form(action='/product', method='POST')
-    label(for="plNumber")
-      | Search for food:
-      input(type='text', name='plNumber', id='plNumber')
-    input(type='submit', value='Submit')
+html
+  head
+    link(rel="stylesheet" type="text/css" href="/styles/style.css")
+  body
+    h1
+      | Product Finder
+    form(action='/product', method='POST')
+      label(for="plNumber")
+        | Search by PL Number: 
+        input(type='text', name='plNumber', id='plNumber')
+      input(type='submit', value='Submit')
     
