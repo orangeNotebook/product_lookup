@@ -2,12 +2,12 @@
   "name": "product_finder",
   "version": "1.0.0",
   "description": "An app to find products",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "build": "tsc",
     "copy-views": "copyfiles -f \"src/views/*.pug\" out/views ",
     "copy-styles": "copyfiles -f \"src/styles/*.css\" public/styles ",
-    "dev": "npm run copy-styles && npm run copy-views && npm run watch & nodemon out/app-express.js",
+    "dev": "npm run copy-styles && npm run copy-views && start npm run watch && nodemon out/app-server.js",
     "start": "node out/index.js",
     "test": "jest",
     "watch": "tsc --watch"
@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "mongoose": "^5.10.3",
     "pug": "^3.0.0"
   }
 }
