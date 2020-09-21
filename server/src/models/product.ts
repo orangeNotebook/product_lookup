@@ -32,6 +32,13 @@ import mongoose from "mongoose";
 //     `
 //   }
 // }
+export interface IProduct extends Document {
+  plNumber: string;
+  name: string;
+  dose: string;
+  substance: string;
+  url: string;
+}
 
 const productSchema = new mongoose.Schema(
   {
@@ -64,6 +71,6 @@ const productSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Product = mongoose.model("Product", productSchema);
+const Product = mongoose.model<IProduct>("Product", productSchema);
 
 export default Product;

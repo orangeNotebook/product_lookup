@@ -1,26 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import ProductSelect from "./components/ProductSelect/index";
+import IProduct from "./models/product";
+import ProductItem from "./components/ProductItem";
 
 function App() {
-  let [basket, setBasket] = useState<string[]>([]);
-
-  const updateBasket = (product: string) => {
-    basket.push(product);
-    setBasket(basket);
-  };
+  // let [basket, setBasket] = useState<string[]>([])
+  let [menu, setMenu] = useState<IProduct[]>([]);
 
   useEffect(() => {
-    fetch("/hello")
+    fetch("/menu")
       .then((response) => response.json())
-      .then((response) => console.log(response));
-  });
+      .then((response) => setMenu(response));
+  }, []);
 
   return (
     <div className="App">
-      <ProductSelect name="PL123456" onSubmit={updateBasket} />
-      <ProductSelect name="PL513872" onSubmit={updateBasket} />
-      <ProductSelect name="PL999999" onSubmit={updateBasket} />
+      {menu.map((productItem) => {
+        return <ProductItem item={productItem} />;
+      })}
     </div>
   );
 }

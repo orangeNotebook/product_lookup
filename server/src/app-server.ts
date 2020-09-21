@@ -25,6 +25,15 @@ app.use(
 );
 let finder;
 
+app.get("/menu", (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  res.send(finder.menu);
+});
+
+app.post("/order", (req, res) => {
+  console.log("Received");
+});
+
 app.get("/", (req: Request, res: Response) => {
   res.render("index");
 });
