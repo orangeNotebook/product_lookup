@@ -19,7 +19,7 @@
     "@types/jest": "^26.0.9",
     "copyfiles": "^2.3.0",
     "jest": "^26.3.0",
-    "mocha": "^8.0.1",
+    "mocha": "^8.4.0",
     "nodemon": "^2.0.4",
     "ts-jest": "^26.1.4",
     "typescript": "^3.9.7"
